@@ -61,15 +61,16 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon to-neon-300;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #39FF14 0%, #66FF47 100%);
   }
 
   .border-gradient {
-    border-image: linear-gradient(135deg, #00FF4B, #00CC3C) 1;
+    border-image: linear-gradient(135deg, #39FF14, #2BC40E) 1;
   }
 
   .glow-text {
-    text-shadow: 0 0 20px rgba(0, 255, 75, 0.5);
+    text-shadow: 0 0 20px rgba(57, 255, 20, 0.5), 0 0 40px rgba(57, 255, 20, 0.3);
   }
 
   .card-glow {
@@ -79,7 +80,7 @@
   .card-glow::before {
     content: '';
     @apply absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300;
-    background: linear-gradient(135deg, rgba(0, 255, 75, 0.1), transparent);
+    background: linear-gradient(135deg, rgba(57, 255, 20, 0.1), transparent);
   }
 
   .card-glow:hover::before {
@@ -88,8 +89,12 @@
 
   .bg-grid {
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      linear-gradient(rgba(57, 255, 20, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(57, 255, 20, 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
+  }
+
+  .bg-spiners {
+    background: linear-gradient(135deg, #0a1f0a 0%, #0d2d0d 50%, #041504 100%);
   }
 }

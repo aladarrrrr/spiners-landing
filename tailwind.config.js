@@ -34,17 +34,21 @@ export default {
           foreground: 'hsl(var(--accent-foreground))',
         },
         neon: {
-          DEFAULT: '#00FF4B',
-          50: '#E6FFF0',
-          100: '#B3FFD1',
-          200: '#80FFB2',
-          300: '#4DFF93',
-          400: '#1AFF74',
-          500: '#00FF4B',
-          600: '#00CC3C',
-          700: '#00992D',
-          800: '#00661E',
-          900: '#00330F',
+          DEFAULT: '#39FF14',
+          50: '#EEFFEA',
+          100: '#CCFFC2',
+          200: '#99FF85',
+          300: '#66FF47',
+          400: '#39FF14',
+          500: '#32E610',
+          600: '#2BC40E',
+          700: '#1F8F0A',
+          800: '#145A06',
+          900: '#0A2D03',
+        },
+        cream: {
+          DEFAULT: '#F5F5DC',
+          light: '#FAFAE6',
         },
         dark: {
           DEFAULT: '#0A0A0B',
@@ -67,8 +71,8 @@ export default {
       },
       keyframes: {
         glow: {
-          '0%': { boxShadow: '0 0 20px rgba(0, 255, 75, 0.3)' },
-          '100%': { boxShadow: '0 0 40px rgba(0, 255, 75, 0.6)' },
+          '0%': { boxShadow: '0 0 20px rgba(57, 255, 20, 0.3)' },
+          '100%': { boxShadow: '0 0 40px rgba(57, 255, 20, 0.6)' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
@@ -80,14 +84,14 @@ export default {
         },
       },
       boxShadow: {
-        'neon': '0 0 20px rgba(0, 255, 75, 0.3)',
-        'neon-lg': '0 0 40px rgba(0, 255, 75, 0.4)',
-        'neon-xl': '0 0 60px rgba(0, 255, 75, 0.5)',
+        'neon': '0 0 20px rgba(57, 255, 20, 0.3)',
+        'neon-lg': '0 0 40px rgba(57, 255, 20, 0.4)',
+        'neon-xl': '0 0 60px rgba(57, 255, 20, 0.5)',
         'card': '0 4px 30px rgba(0, 0, 0, 0.5)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-neon': 'linear-gradient(135deg, #00FF4B 0%, #00CC3C 100%)',
+        'gradient-neon': 'linear-gradient(135deg, #39FF14 0%, #2BC40E 100%)',
         'gradient-dark': 'linear-gradient(180deg, #0A0A0B 0%, #141415 100%)',
       },
       borderRadius: {

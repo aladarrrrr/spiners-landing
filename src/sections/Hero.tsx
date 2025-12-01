@@ -1,38 +1,17 @@
 import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Spade, Heart, Diamond, Club } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import logoFull from '@/assets/logo-full.png'
 
-// Poker chip positions for floating animation
-const pokerChips = [
-  { delay: 0, x: -200, y: -120, size: 'w-12 h-12 md:w-16 md:h-16', rotation: 15 },
-  { delay: 0.2, x: 220, y: -80, size: 'w-16 h-16 md:w-20 md:h-20', rotation: -10 },
-  { delay: 0.4, x: -180, y: 140, size: 'w-14 h-14 md:w-18 md:h-18', rotation: 25 },
-  { delay: 0.6, x: 250, y: 100, size: 'w-10 h-10 md:w-14 md:h-14', rotation: -20 },
-  { delay: 0.3, x: 50, y: 180, size: 'w-8 h-8 md:w-12 md:h-12', rotation: 45 },
+// Floating cards positions
+const floatingCards = [
+  { icon: Spade, delay: 0, x: -180, y: -100, rotation: -15 },
+  { icon: Heart, delay: 0.15, x: 200, y: -80, rotation: 12 },
+  { icon: Diamond, delay: 0.3, x: -220, y: 120, rotation: 20 },
+  { icon: Club, delay: 0.45, x: 240, y: 100, rotation: -18 },
+  { icon: Spade, delay: 0.2, x: 80, y: 160, rotation: 25 },
+  { icon: Heart, delay: 0.35, x: -100, y: -160, rotation: -10 },
 ]
-
-// Poker chip SVG component
-const PokerChip = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 100 100" className={className} fill="none">
-    <circle cx="50" cy="50" r="45" fill="#1a1a1a" stroke="#39FF14" strokeWidth="3" />
-    <circle cx="50" cy="50" r="35" fill="#0a0a0a" stroke="#39FF14" strokeWidth="2" />
-    <circle cx="50" cy="50" r="20" fill="#1a1a1a" stroke="#39FF14" strokeWidth="1.5" />
-    {/* Edge notches */}
-    {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
-      <rect
-        key={angle}
-        x="47"
-        y="2"
-        width="6"
-        height="10"
-        rx="2"
-        fill="#39FF14"
-        transform={`rotate(${angle} 50 50)`}
-      />
-    ))}
-  </svg>
-)
 
 export default function Hero() {
   const scrollToSection = (href: string) => {
@@ -43,7 +22,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Gradient Background matching banner */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0a1f0a] via-[#0d2d0d] to-[#041504]" />
 
@@ -55,38 +34,38 @@ export default function Hero() {
       {/* Grid overlay */}
       <div className="absolute inset-0 bg-grid opacity-20" />
 
-      {/* Floating Poker Chips */}
+      {/* Floating Cards */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        {pokerChips.map((chip, index) => (
+        {floatingCards.map((card, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, scale: 0 }}
             animate={{
-              opacity: 0.7,
+              opacity: 0.6,
               scale: 1,
-              x: chip.x,
-              y: chip.y,
+              x: card.x,
+              y: card.y,
             }}
             transition={{
-              delay: chip.delay + 0.5,
-              duration: 0.6,
+              delay: card.delay + 0.5,
+              duration: 0.5,
               type: 'spring',
             }}
             className="absolute"
           >
             <motion.div
               animate={{
-                y: [0, -15, 0],
-                rotate: [chip.rotation, chip.rotation + 10, chip.rotation],
+                y: [0, -20, 0],
+                rotate: [card.rotation, card.rotation + 8, card.rotation],
               }}
               transition={{
-                duration: 5 + index,
+                duration: 5 + index * 0.5,
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
-              className={chip.size}
+              className="w-16 h-24 md:w-20 md:h-28 rounded-xl bg-gradient-to-br from-dark-50 to-dark-100 border border-neon/30 flex items-center justify-center shadow-neon"
             >
-              <PokerChip className="w-full h-full drop-shadow-[0_0_10px_rgba(57,255,20,0.5)]" />
+              <card.icon className="w-8 h-8 md:w-10 md:h-10 text-neon" />
             </motion.div>
           </motion.div>
         ))}
@@ -117,13 +96,13 @@ export default function Hero() {
             className="mb-8 space-y-1"
           >
             <p className="text-xl sm:text-2xl md:text-3xl font-bold tracking-wider text-cream uppercase">
-              Best Coaching.
+              Best Coaching
             </p>
             <p className="text-xl sm:text-2xl md:text-3xl font-bold tracking-wider text-cream uppercase">
-              Easy Grind.
+              Easy Grind
             </p>
             <p className="text-xl sm:text-2xl md:text-3xl font-bold tracking-wider text-neon uppercase glow-text">
-              Easy Money.
+              Easy Money
             </p>
           </motion.div>
 

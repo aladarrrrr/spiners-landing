@@ -43,10 +43,10 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-dark/95 backdrop-blur-lg border-b ${
         isScrolled
-          ? 'bg-dark/90 backdrop-blur-lg border-b border-white/5'
-          : 'bg-transparent'
+          ? 'border-neon/30 shadow-[0_2px_20px_rgba(57,255,20,0.15)]'
+          : 'border-neon/20'
       }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">

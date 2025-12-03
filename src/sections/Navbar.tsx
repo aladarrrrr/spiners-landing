@@ -9,12 +9,8 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet'
 import logoFull from '@/assets/logo-full.png'
-
-const navLinks = [
-  { href: '#pourquoi', label: 'Pourquoi les Spins' },
-  { href: '#equipe', label: 'Équipe' },
-  { href: '#faq', label: 'FAQ' },
-]
+import { navLinks } from '@/config/navigation'
+import { scrollToSection } from '@/lib/scroll'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -28,12 +24,9 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const scrollToSection = (href: string) => {
+  const handleNavClick = (href: string) => {
     setIsOpen(false)
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
+    scrollToSection(href)
   }
 
   return (
@@ -63,7 +56,7 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <button
                 key={link.href}
-                onClick={() => scrollToSection(link.href)}
+                onClick={() => handleNavClick(link.href)}
                 className="text-gray-300 hover:text-neon transition-colors duration-200 text-sm font-medium"
               >
                 {link.label}
@@ -92,7 +85,7 @@ export default function Navbar() {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        onClick={() => scrollToSection(link.href)}
+                        onClick={() => handleNavClick(link.href)}
                         className="text-left text-lg text-gray-300 hover:text-neon transition-colors py-2 border-b border-white/10"
                       >
                         {link.label}

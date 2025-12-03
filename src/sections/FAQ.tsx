@@ -6,6 +6,8 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import { Card, CardContent } from '@/components/ui/card'
+import SectionHeader from '@/components/SectionHeader'
+import { fadeInUpWithDelay } from '@/lib/animations'
 
 const faqs = [
   {
@@ -37,31 +39,16 @@ export default function FAQ() {
       <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-neon/5 rounded-full blur-[150px]" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="inline-block px-4 py-2 rounded-full bg-neon/10 border border-neon/30 text-neon text-sm font-medium mb-4">
-            Questions fréquentes
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-4">
-            Une <span className="text-gradient">question</span> ?
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Retrouve les réponses aux questions les plus posées par notre communauté.
-          </p>
-        </motion.div>
+        <SectionHeader
+          badge="Questions fréquentes"
+          title="Une"
+          titleHighlight="question ?"
+          description="Retrouve les réponses aux questions les plus posées par notre communauté."
+        />
 
         {/* FAQ Accordion */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          {...fadeInUpWithDelay(0.1)}
           className="max-w-3xl mx-auto"
         >
           <Card className="bg-dark-100/50 border-white/10">

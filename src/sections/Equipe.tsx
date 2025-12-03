@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import useEmblaCarousel from 'embla-carousel-react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
+import SectionHeader from '@/components/SectionHeader'
+import { fadeInUpWithDelay } from '@/lib/animations'
 
 const team = [
   {
@@ -62,35 +64,20 @@ export default function Equipe() {
   return (
     <section id="equipe" className="py-20 md:py-32 bg-dark relative overflow-hidden">
       {/* Background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-neon/3 rounded-full blur-[150px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-neon/5 rounded-full blur-[150px]" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <span className="inline-block px-4 py-2 rounded-full bg-neon/10 border border-neon/30 text-neon text-sm font-medium mb-4">
-            L'équipe
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-4">
-            Tes <span className="text-gradient">coachs</span>
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Des professionnels du poker qui ont prouvé leur valeur sur les tables
-            et qui transmettent maintenant leur expertise.
-          </p>
-        </motion.div>
+        <SectionHeader
+          badge="L'équipe"
+          title="Tes"
+          titleHighlight="coachs"
+          description="Des professionnels du poker qui ont prouvé leur valeur sur les tables et qui transmettent maintenant leur expertise."
+          className="mb-12"
+        />
 
         {/* Profile Selector */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          {...fadeInUpWithDelay(0.2)}
           className="flex justify-center gap-8 md:gap-16 mb-12"
         >
           {team.map((member, index) => (
@@ -128,23 +115,20 @@ export default function Equipe() {
 
         {/* Carousel */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          {...fadeInUpWithDelay(0.3)}
           className="max-w-4xl mx-auto"
         >
           {/* Navigation Arrows */}
           <div className="flex items-center justify-center gap-4 mb-6">
             <button
               onClick={scrollPrev}
-              className="w-10 h-10 rounded-full bg-dark-50 border border-white/10 flex items-center justify-center text-white hover:border-neon/50 hover:text-neon transition-all"
+              className="w-10 h-10 rounded-full bg-dark-50 border border-white/10 flex items-center justify-center text-white hover:border-neon/30 hover:text-neon transition-all"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={scrollNext}
-              className="w-10 h-10 rounded-full bg-dark-50 border border-white/10 flex items-center justify-center text-white hover:border-neon/50 hover:text-neon transition-all"
+              className="w-10 h-10 rounded-full bg-dark-50 border border-white/10 flex items-center justify-center text-white hover:border-neon/30 hover:text-neon transition-all"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -176,7 +160,7 @@ export default function Equipe() {
                         {member.highlights.map((highlight, hIndex) => (
                           <span
                             key={hIndex}
-                            className="px-3 py-1 rounded-full bg-neon/10 border border-neon/20 text-neon text-xs font-medium"
+                            className="px-3 py-1 rounded-full bg-neon/10 border border-neon/30 text-neon text-xs font-medium"
                           >
                             {highlight}
                           </span>

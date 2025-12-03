@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  /* Default theme: Emerald (modern, softer green) */
   :root {
     --background: 0 0% 4%;
     --foreground: 0 0% 98%;
@@ -26,45 +25,9 @@
     --ring: 160 84% 39%;
     --radius: 0.75rem;
 
-    /* Theme color RGB values for dynamic use */
+    /* Theme color RGB values */
     --theme-color: 16 185 129;
     --theme-color-hex: #10B981;
-  }
-
-  /* Emerald theme (default) */
-  [data-theme="emerald"] {
-    --primary: 160 84% 39%;
-    --accent: 160 84% 39%;
-    --ring: 160 84% 39%;
-    --theme-color: 16 185 129;
-    --theme-color-hex: #10B981;
-  }
-
-  /* Neon theme (original bright green) */
-  [data-theme="neon"] {
-    --primary: 110 100% 54%;
-    --accent: 110 100% 54%;
-    --ring: 110 100% 54%;
-    --theme-color: 57 255 20;
-    --theme-color-hex: #39FF14;
-  }
-
-  /* Cyan theme (tech blue) */
-  [data-theme="cyan"] {
-    --primary: 186 94% 42%;
-    --accent: 186 94% 42%;
-    --ring: 186 94% 42%;
-    --theme-color: 6 182 212;
-    --theme-color-hex: #06B6D4;
-  }
-
-  /* Amber theme (golden) */
-  [data-theme="amber"] {
-    --primary: 38 92% 50%;
-    --accent: 38 92% 50%;
-    --ring: 38 92% 50%;
-    --theme-color: 245 158 11;
-    --theme-color-hex: #F59E0B;
   }
 }
 
@@ -133,9 +96,5 @@
       linear-gradient(rgb(var(--theme-color) / 0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgb(var(--theme-color) / 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
-  }
-
-  .bg-spiners {
-    background: linear-gradient(135deg, #0a0f0a 0%, #0d1a0d 50%, #040804 100%);
   }
 }

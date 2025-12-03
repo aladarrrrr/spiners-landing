@@ -2,8 +2,9 @@ import { motion } from 'framer-motion'
 import { ChevronDown, Spade, Heart, Diamond, Club } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import logoFull from '@/assets/logo-full.png'
+import { scrollToSection } from '@/lib/scroll'
+import { fadeInUp } from '@/lib/animations'
 
-// Floating cards positions
 const floatingCards = [
   { icon: Spade, delay: 0, x: -180, y: -100, rotation: -15 },
   { icon: Heart, delay: 0.15, x: 200, y: -80, rotation: 12 },
@@ -14,19 +15,12 @@ const floatingCards = [
 ]
 
 export default function Hero() {
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Gradient Background - darker, more modern */}
+      {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#050a05] via-[#0a150a] to-[#030503]" />
 
-      {/* Animated glow spots - reduced intensity */}
+      {/* Animated glow spots */}
       <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon/5 rounded-full blur-[150px] animate-pulse" />
       <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-neon/8 rounded-full blur-[100px]" />
       <div className="absolute bottom-1/4 left-1/3 w-[300px] h-[300px] bg-neon/5 rounded-full blur-[80px]" />
@@ -88,7 +82,7 @@ export default function Hero() {
             />
           </motion.div>
 
-          {/* Tagline like banner */}
+          {/* Tagline */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -107,8 +101,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            {...fadeInUp}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-base sm:text-lg text-gray-200 mb-10 max-w-2xl mx-auto"
           >
@@ -117,8 +110,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            {...fadeInUp}
             transition={{ duration: 0.6, delay: 0.5 }}
             className="flex justify-center"
           >
@@ -133,8 +125,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            {...fadeInUp}
             transition={{ duration: 0.6, delay: 0.6 }}
             className="mt-16 flex items-center justify-center gap-6 sm:gap-8 text-gray-500"
           >
@@ -173,7 +164,7 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Bottom delimiter - horizontal gradient line */}
+      {/* Bottom delimiter */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/30 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-dark to-transparent pointer-events-none" />
     </section>

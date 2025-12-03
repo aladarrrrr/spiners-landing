@@ -1,50 +1,23 @@
 import { motion } from 'framer-motion'
 import { Youtube, MessageCircle } from 'lucide-react'
 import logoFull from '@/assets/logo-full.png'
+import { footerSections, socialLinks } from '@/config/navigation'
+import { scrollToSection } from '@/lib/scroll'
+import { fadeInUpWithDelay } from '@/lib/animations'
 
-const footerLinks = [
-  {
-    title: 'Navigation',
-    links: [
-      { label: 'Pourquoi les Spins', href: '#pourquoi' },
-      { label: 'L\'équipe', href: '#equipe' },
-      { label: 'FAQ', href: '#faq' },
-    ],
-  },
-  {
-    title: 'Légal',
-    links: [
-      { label: 'Mentions légales', href: '#' },
-      { label: 'Politique de confidentialité', href: '#' },
-    ],
-  },
-]
-
-const socialLinks = [
-  { icon: Youtube, href: '#', label: 'YouTube' },
-  { icon: MessageCircle, href: '#', label: 'Discord' },
-]
+const iconMap = {
+  youtube: Youtube,
+  discord: MessageCircle,
+}
 
 export default function Footer() {
-  const scrollToSection = (href: string) => {
-    if (href.startsWith('#')) {
-      const element = document.querySelector(href)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
-    }
-  }
-
   return (
-    <footer className="bg-dark-100 border-t border-white/5">
+    <footer className="bg-dark-100 border-t border-white/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {/* Brand */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            {...fadeInUpWithDelay(0)}
             className="lg:col-span-1"
           >
             <img
@@ -57,27 +30,27 @@ export default function Footer() {
               Rejoins une équipe de coachs expérimentés et passe au niveau supérieur.
             </p>
             <div className="flex gap-3">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="w-10 h-10 rounded-xl bg-dark/50 border border-white/10 flex items-center justify-center text-gray-400 hover:text-neon hover:border-neon/50 transition-all"
-                >
-                  <social.icon className="w-5 h-5" />
-                </a>
-              ))}
+              {socialLinks.map((social, index) => {
+                const Icon = iconMap[social.icon]
+                return (
+                  <a
+                    key={index}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="w-10 h-10 rounded-xl bg-dark/50 border border-white/10 flex items-center justify-center text-gray-400 hover:text-neon hover:border-neon/30 transition-all"
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                )
+              })}
             </div>
           </motion.div>
 
           {/* Links */}
-          {footerLinks.map((section, sectionIndex) => (
+          {footerSections.map((section, sectionIndex) => (
             <motion.div
               key={sectionIndex}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: sectionIndex * 0.1 }}
+              {...fadeInUpWithDelay(sectionIndex * 0.1)}
             >
               <h4 className="text-white font-semibold mb-4">{section.title}</h4>
               <ul className="space-y-3">
@@ -102,7 +75,7 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-12 pt-8 border-t border-white/5"
+          className="mt-12 pt-8 border-t border-white/10"
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
             <p>© {new Date().getFullYear()} Spiners. Tous droits réservés.</p>

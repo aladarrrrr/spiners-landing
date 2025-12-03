@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer base {
+  /* Default theme: Emerald (modern, softer green) */
   :root {
     --background: 0 0% 4%;
     --foreground: 0 0% 98%;
@@ -10,20 +11,60 @@
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 6%;
     --popover-foreground: 0 0% 98%;
-    --primary: 142 100% 50%;
+    --primary: 160 84% 39%;
     --primary-foreground: 0 0% 0%;
     --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 64%;
-    --accent: 142 100% 50%;
+    --accent: 160 84% 39%;
     --accent-foreground: 0 0% 0%;
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 15%;
     --input: 0 0% 15%;
-    --ring: 142 100% 50%;
+    --ring: 160 84% 39%;
     --radius: 0.75rem;
+
+    /* Theme color RGB values for dynamic use */
+    --theme-color: 16 185 129;
+    --theme-color-hex: #10B981;
+  }
+
+  /* Emerald theme (default) */
+  [data-theme="emerald"] {
+    --primary: 160 84% 39%;
+    --accent: 160 84% 39%;
+    --ring: 160 84% 39%;
+    --theme-color: 16 185 129;
+    --theme-color-hex: #10B981;
+  }
+
+  /* Neon theme (original bright green) */
+  [data-theme="neon"] {
+    --primary: 110 100% 54%;
+    --accent: 110 100% 54%;
+    --ring: 110 100% 54%;
+    --theme-color: 57 255 20;
+    --theme-color-hex: #39FF14;
+  }
+
+  /* Cyan theme (tech blue) */
+  [data-theme="cyan"] {
+    --primary: 186 94% 42%;
+    --accent: 186 94% 42%;
+    --ring: 186 94% 42%;
+    --theme-color: 6 182 212;
+    --theme-color-hex: #06B6D4;
+  }
+
+  /* Amber theme (golden) */
+  [data-theme="amber"] {
+    --primary: 38 92% 50%;
+    --accent: 38 92% 50%;
+    --ring: 38 92% 50%;
+    --theme-color: 245 158 11;
+    --theme-color-hex: #F59E0B;
   }
 }
 
@@ -62,15 +103,15 @@
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #39FF14 0%, #66FF47 100%);
+    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.7) 100%);
   }
 
   .border-gradient {
-    border-image: linear-gradient(135deg, #39FF14, #2BC40E) 1;
+    border-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.8)) 1;
   }
 
   .glow-text {
-    text-shadow: 0 0 20px rgba(57, 255, 20, 0.5), 0 0 40px rgba(57, 255, 20, 0.3);
+    text-shadow: 0 0 20px rgb(var(--theme-color) / 0.5), 0 0 40px rgb(var(--theme-color) / 0.3);
   }
 
   .card-glow {
@@ -80,7 +121,7 @@
   .card-glow::before {
     content: '';
     @apply absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300;
-    background: linear-gradient(135deg, rgba(57, 255, 20, 0.1), transparent);
+    background: linear-gradient(135deg, rgb(var(--theme-color) / 0.1), transparent);
   }
 
   .card-glow:hover::before {
@@ -89,12 +130,12 @@
 
   .bg-grid {
     background-image:
-      linear-gradient(rgba(57, 255, 20, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(57, 255, 20, 0.03) 1px, transparent 1px);
+      linear-gradient(rgb(var(--theme-color) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--theme-color) / 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
   }
 
   .bg-spiners {
-    background: linear-gradient(135deg, #0a1f0a 0%, #0d2d0d 50%, #041504 100%);
+    background: linear-gradient(135deg, #0a0f0a 0%, #0d1a0d 50%, #040804 100%);
   }
 }

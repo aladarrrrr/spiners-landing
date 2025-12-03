@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Clock, TrendingUp, Trophy, Zap } from 'lucide-react'
+import { Clock, TrendingUp, Calendar, Briefcase, Users, Zap } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 
 const features = [
@@ -16,10 +16,22 @@ const features = [
       'Un format où le skill fait la différence. Moins de variance, plus de régularité.',
   },
   {
-    icon: Trophy,
-    title: 'Multiplicateurs géants',
+    icon: Calendar,
+    title: 'Plus de flexibilité',
     description:
-      "Jusqu'à 10 000x le buy-in. Des gains exceptionnels accessibles à tous les niveaux.",
+      'Liberté totale sur les horaires. Jouez quand vous voulez, aussi longtemps que vous voulez.',
+  },
+  {
+    icon: Briefcase,
+    title: 'Compatible emploi du temps',
+    description:
+      'Possibilité de grind même avec un emploi du temps chargé. Idéal en complément d\'une activité.',
+  },
+  {
+    icon: Users,
+    title: 'Vie sociale préservée',
+    description:
+      'Plus facile pour la vie sociale et la vie de famille. Le poker s\'adapte à votre rythme.',
   },
   {
     icon: Zap,
@@ -71,7 +83,7 @@ export default function PourquoiSpins() {
             Pourquoi les <span className="text-gradient">Spins & Go</span> ?
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Le format le plus excitant et rentable du poker en ligne.
+            Sûrement le format le plus facile et le plus rentable du poker en ligne.
             Découvrez pourquoi des milliers de joueurs ont fait le switch.
           </p>
         </motion.div>
@@ -82,7 +94,7 @@ export default function PourquoiSpins() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {features.map((feature, index) => (
             <motion.div key={index} variants={itemVariants}>

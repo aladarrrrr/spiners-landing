@@ -12,9 +12,7 @@ import logoFull from '@/assets/logo-full.png'
 
 const navLinks = [
   { href: '#pourquoi', label: 'Pourquoi les Spins' },
-  { href: '#offres', label: 'Nos Offres' },
   { href: '#equipe', label: 'Équipe' },
-  { href: '#resultats', label: 'Résultats' },
   { href: '#faq', label: 'FAQ' },
 ]
 
@@ -50,9 +48,9 @@ export default function Navbar() {
       }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-16 md:h-20 relative">
           {/* Logo */}
-          <a href="#" className="flex items-center">
+          <a href="#" className="flex items-center z-10">
             <img
               src={logoFull}
               alt="Spiners"
@@ -60,8 +58,8 @@ export default function Navbar() {
             />
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
             {navLinks.map((link) => (
               <button
                 key={link.href}
@@ -73,18 +71,11 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:block">
-            <Button
-              onClick={() => scrollToSection('#contact')}
-              className="shadow-neon"
-            >
-              Rejoindre Spiners
-            </Button>
-          </div>
+          {/* Spacer for layout balance on desktop */}
+          <div className="hidden lg:block w-[100px]" />
 
           {/* Mobile Menu */}
-          <div className="lg:hidden">
+          <div className="lg:hidden z-10">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -108,12 +99,6 @@ export default function Navbar() {
                       </motion.button>
                     ))}
                   </AnimatePresence>
-                  <Button
-                    onClick={() => scrollToSection('#contact')}
-                    className="mt-4 w-full"
-                  >
-                    Rejoindre Spiners
-                  </Button>
                 </div>
               </SheetContent>
             </Sheet>

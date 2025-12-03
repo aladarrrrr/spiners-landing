@@ -23,13 +23,13 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Gradient Background matching banner */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0a1f0a] via-[#0d2d0d] to-[#041504]" />
+      {/* Gradient Background - darker, more modern */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#050a05] via-[#0a150a] to-[#030503]" />
 
-      {/* Animated glow spots */}
-      <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon/10 rounded-full blur-[150px] animate-pulse" />
-      <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-neon/15 rounded-full blur-[100px]" />
-      <div className="absolute bottom-1/4 left-1/3 w-[300px] h-[300px] bg-neon/8 rounded-full blur-[80px]" />
+      {/* Animated glow spots - reduced intensity */}
+      <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon/5 rounded-full blur-[150px] animate-pulse" />
+      <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-neon/8 rounded-full blur-[100px]" />
+      <div className="absolute bottom-1/4 left-1/3 w-[300px] h-[300px] bg-neon/5 rounded-full blur-[80px]" />
 
       {/* Grid overlay */}
       <div className="absolute inset-0 bg-grid opacity-20" />
@@ -110,7 +110,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-base sm:text-lg text-gray-400 mb-10 max-w-2xl mx-auto"
+            className="text-base sm:text-lg text-gray-200 mb-10 max-w-2xl mx-auto"
           >
             Accompagnement pro pour progresser rapidement en Spins & Go.
             Rejoins une équipe de coachs expérimentés et passe au niveau supérieur.
@@ -120,22 +120,15 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex justify-center"
           >
             <Button
               size="lg"
-              onClick={() => scrollToSection('#contact')}
-              className="shadow-neon-lg text-base font-bold"
-            >
-              Rejoindre Spiners
-            </Button>
-            <Button
-              size="lg"
               variant="outline"
-              onClick={() => scrollToSection('#offres')}
+              onClick={() => scrollToSection('#equipe')}
               className="font-bold"
             >
-              Découvrir les offres
+              Découvrir notre équipe
             </Button>
           </motion.div>
 
@@ -168,7 +161,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-16 left-1/2 -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
@@ -179,6 +172,10 @@ export default function Hero() {
           <ChevronDown className="w-8 h-8 text-neon" />
         </motion.div>
       </motion.div>
+
+      {/* Bottom delimiter - horizontal gradient line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-dark to-transparent pointer-events-none" />
     </section>
   )
 }

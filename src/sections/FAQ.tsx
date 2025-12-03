@@ -11,37 +11,22 @@ const faqs = [
   {
     question: 'Quel niveau faut-il pour rejoindre Spiners ?',
     answer:
-      'Spiners accueille tous les niveaux, du débutant au joueur confirmé. Nos formules sont adaptées à chaque profil. Le pack Starter est parfait pour débuter, tandis que le pack Elite convient aux joueurs expérimentés cherchant à atteindre les hautes limites.',
+      'Pour la Team Coaching For Profit, nous recherchons des grinders déjà gagnants en 10€+. Nous restons inclusifs : contenu gratuit sur YouTube et cours de rattrapage pour ceux qui veulent rejoindre la team dans le futur.',
   },
   {
     question: 'Comment se déroule le coaching ?',
     answer:
-      'Le coaching se fait principalement via Discord. Tu auras accès à des sessions live, des reviews de tes parties, du contenu vidéo exclusif et un accompagnement personnalisé selon ta formule. Les coachs sont disponibles pour répondre à tes questions et analyser ton jeu.',
-  },
-  {
-    question: 'Quelle bankroll faut-il pour commencer ?',
-    answer:
-      'Nous recommandons un minimum de 100 buy-ins pour la limite que tu veux jouer. Par exemple, 100€ pour les Spins à 1€, 500€ pour les 5€. Nos coachs t\'aident à gérer ta bankroll de manière optimale pour minimiser les risques.',
-  },
-  {
-    question: 'Puis-je changer de formule en cours de route ?',
-    answer:
-      'Absolument ! Tu peux upgrader ta formule à tout moment. La différence de prix sera calculée au prorata. Beaucoup de nos élèves commencent par le pack Starter et évoluent vers Grind ou Elite au fur et à mesure de leur progression.',
+      'Le coaching se fait via Discord : en individuel (travail personnalisé) ou en collectif (thématiques communes, analyses de mains). Matériel nécessaire : Discord, un ordinateur, un tracker obligatoire pour analyser les mains et mesurer la progression.',
   },
   {
     question: 'Y a-t-il un engagement de durée ?',
     answer:
-      'Non, nos abonnements sont mensuels sans engagement. Tu peux arrêter ou mettre en pause à tout moment. Cela dit, nous recommandons un minimum de 3 mois pour voir des résultats significatifs.',
+      'Nous pouvons être flexibles et voir au cas par cas, mais pour obtenir des résultats significatifs, il est préférable de travailler sur plusieurs mois.',
   },
   {
-    question: 'Comment fonctionne le staking ?',
+    question: 'Que se passe-t-il après avoir postulé ?',
     answer:
-      'Le staking est disponible pour les membres Elite après évaluation. Nous investissons dans ton jeu en échange d\'un pourcentage des gains. C\'est une opportunité de jouer des limites plus élevées sans risquer ton propre argent. Les conditions sont discutées individuellement.',
-  },
-  {
-    question: 'Sur quelles rooms puis-je jouer ?',
-    answer:
-      'Notre coaching s\'adapte à toutes les principales rooms : Winamax, PokerStars, GGPoker, PMU, Unibet... Les stratégies de base sont les mêmes, et nous adaptons certains conseils selon les spécificités de chaque room.',
+      'Nous analysons votre profil, votre niveau et vos objectifs. Si votre profil correspond, nous vous recontactons pour établir un plan d\'action personnalisé.',
   },
 ]
 

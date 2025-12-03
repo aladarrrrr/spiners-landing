@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Mail, MessageCircle, Twitter, Instagram } from 'lucide-react'
+import { Youtube, MessageCircle } from 'lucide-react'
 import logoFull from '@/assets/logo-full.png'
 
 const footerLinks = [
@@ -7,9 +7,7 @@ const footerLinks = [
     title: 'Navigation',
     links: [
       { label: 'Pourquoi les Spins', href: '#pourquoi' },
-      { label: 'Nos Offres', href: '#offres' },
       { label: 'L\'équipe', href: '#equipe' },
-      { label: 'Résultats', href: '#resultats' },
       { label: 'FAQ', href: '#faq' },
     ],
   },
@@ -17,17 +15,14 @@ const footerLinks = [
     title: 'Légal',
     links: [
       { label: 'Mentions légales', href: '#' },
-      { label: 'CGV', href: '#' },
       { label: 'Politique de confidentialité', href: '#' },
     ],
   },
 ]
 
 const socialLinks = [
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
+  { icon: Youtube, href: '#', label: 'YouTube' },
   { icon: MessageCircle, href: '#', label: 'Discord' },
-  { icon: Mail, href: 'mailto:contact@spiners.fr', label: 'Email' },
 ]
 
 export default function Footer() {
@@ -43,7 +38,7 @@ export default function Footer() {
   return (
     <footer className="bg-dark-100 border-t border-white/5">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {/* Brand */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -99,34 +94,6 @@ export default function Footer() {
               </ul>
             </motion.div>
           ))}
-
-          {/* Contact */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <h4 className="text-white font-semibold mb-4">Contact</h4>
-            <ul className="space-y-3 text-sm text-gray-400">
-              <li>
-                <a
-                  href="mailto:contact@spiners.fr"
-                  className="hover:text-neon transition-colors"
-                >
-                  contact@spiners.fr
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-neon transition-colors"
-                >
-                  Discord Spiners
-                </a>
-              </li>
-            </ul>
-          </motion.div>
         </div>
 
         {/* Bottom */}

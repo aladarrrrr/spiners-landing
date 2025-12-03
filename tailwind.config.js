@@ -34,17 +34,17 @@ export default {
           foreground: 'hsl(var(--accent-foreground))',
         },
         neon: {
-          DEFAULT: '#39FF14',
-          50: '#EEFFEA',
-          100: '#CCFFC2',
-          200: '#99FF85',
-          300: '#66FF47',
-          400: '#39FF14',
-          500: '#32E610',
-          600: '#2BC40E',
-          700: '#1F8F0A',
-          800: '#145A06',
-          900: '#0A2D03',
+          DEFAULT: 'hsl(var(--primary))',
+          50: 'hsl(var(--primary) / 0.1)',
+          100: 'hsl(var(--primary) / 0.2)',
+          200: 'hsl(var(--primary) / 0.3)',
+          300: 'hsl(var(--primary) / 0.5)',
+          400: 'hsl(var(--primary) / 0.7)',
+          500: 'hsl(var(--primary))',
+          600: 'hsl(var(--primary) / 0.9)',
+          700: 'hsl(var(--primary) / 0.8)',
+          800: 'hsl(var(--primary) / 0.6)',
+          900: 'hsl(var(--primary) / 0.4)',
         },
         cream: {
           DEFAULT: '#F5F5DC',
@@ -71,8 +71,8 @@ export default {
       },
       keyframes: {
         glow: {
-          '0%': { boxShadow: '0 0 20px rgba(57, 255, 20, 0.3)' },
-          '100%': { boxShadow: '0 0 40px rgba(57, 255, 20, 0.6)' },
+          '0%': { boxShadow: '0 0 15px rgb(var(--theme-color) / 0.2)' },
+          '100%': { boxShadow: '0 0 30px rgb(var(--theme-color) / 0.4)' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
@@ -84,14 +84,14 @@ export default {
         },
       },
       boxShadow: {
-        'neon': '0 0 20px rgba(57, 255, 20, 0.3)',
-        'neon-lg': '0 0 40px rgba(57, 255, 20, 0.4)',
-        'neon-xl': '0 0 60px rgba(57, 255, 20, 0.5)',
+        'neon': '0 0 15px rgb(var(--theme-color) / 0.2)',
+        'neon-lg': '0 0 25px rgb(var(--theme-color) / 0.25)',
+        'neon-xl': '0 0 40px rgb(var(--theme-color) / 0.3)',
         'card': '0 4px 30px rgba(0, 0, 0, 0.5)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-neon': 'linear-gradient(135deg, #39FF14 0%, #2BC40E 100%)',
+        'gradient-neon': 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 100%)',
         'gradient-dark': 'linear-gradient(180deg, #0A0A0B 0%, #141415 100%)',
       },
       borderRadius: {

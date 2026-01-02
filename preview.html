@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Preview — Spiners</title>
+    <style>
+      body { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; }
+      header { padding:12px 18px; background:#0f172a; color:#fff; display:flex;gap:12px; align-items:center }
+      header a { color:#60a5fa; text-decoration:none }
+      .note { padding:12px 18px; background:#f8fafc; color:#0f172a }
+      iframe { width:100%; height:calc(100vh - 96px); border:0; display:block }
+      .fallback { padding:18px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <strong>Preview — Spiners</strong>
+      <span style="opacity:.75">(iframe vers le serveur de dev)</span>
+    </header>
+    <div class="note">
+      - Si vous avez démarré le serveur avec `npm run dev` (ou `.\start-dev.ps1`), la page ci-dessous s'affichera.
+      - Si le serveur n'est pas lancé, ouvrez `index.html` ou lancez `.\start-dev.ps1` depuis le dossier du projet.
+    </div>
+
+    <iframe id="previewFrame" src="http://localhost:5173/" title="Preview"></iframe>
+
+    <div class="fallback" id="fallback" style="display:none">
+      <p>Le serveur local ne répond pas sur <code>http://localhost:5173/</code>.</p>
+      <p>Ouvrez le fichier <code>index.html</code> dans le dossier du projet pour un aperçu statique minimal.</p>
+      <p>Commande pour démarrer le serveur (PowerShell) :</p>
+      <pre>Set-Location -Path 'd:\Projets code\Site version 2\ala_deux'
+.\start-dev.ps1</pre>
+    </div>
+
+    <script>
+      // Si l'iframe ne répond pas au bout de 3s, afficher le message de fallback
+      const iframe = document.getElementById('previewFrame');
+      const fallback = document.getElementById('fallback');
+      let loaded = false;
+      iframe.addEventListener('load', () => { loaded = true; });
+      setTimeout(() => { if (!loaded) { iframe.style.display = 'none'; fallback.style.display = 'block'; } }, 3000);
+    </script>
+  </body>
+</html>

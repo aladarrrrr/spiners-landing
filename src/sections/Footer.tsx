@@ -77,11 +77,11 @@ export default function Footer() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-12 pt-8 border-t border-white/10"
         >
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
             <p>© {new Date().getFullYear()} Spiners. Tous droits réservés.</p>
             <p className="text-center md:text-right max-w-xl">
               Le poker comporte des risques. Joue de manière responsable.
-              18+ uniquement. Le coaching ne garantit pas de gains.
+              18+ uniquement.
             </p>
           </div>
         </motion.div>

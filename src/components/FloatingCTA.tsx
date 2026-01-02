@@ -17,7 +17,7 @@ export default function FloatingCTA() {
         onClick={openModal}
         className="shadow-neon-lg text-lg font-bold px-10 py-7 rounded-xl"
       >
-        Postulez
+        Je Postule
       </Button>
     </motion.div>
   )

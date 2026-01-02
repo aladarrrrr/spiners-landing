@@ -124,26 +124,6 @@ export default function Hero() {
             </Button>
           </motion.div>
 
-          <motion.div
-            {...fadeInUp}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-16 flex items-center justify-center gap-6 sm:gap-8 text-gray-500"
-          >
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-white">500+</div>
-              <div className="text-xs sm:text-sm">Élèves formés</div>
-            </div>
-            <div className="w-px h-10 sm:h-12 bg-neon/30" />
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-white">5M€+</div>
-              <div className="text-xs sm:text-sm">Gains cumulés</div>
-            </div>
-            <div className="w-px h-10 sm:h-12 bg-neon/30" />
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-white">98%</div>
-              <div className="text-xs sm:text-sm">Satisfaction</div>
-            </div>
-          </motion.div>
         </div>
       </div>
 

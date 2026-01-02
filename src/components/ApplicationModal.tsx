@@ -19,6 +19,7 @@ interface FormData {
   fullName: string
   birthDate: string
   profession: string
+  email: string
   discordId: string
   otherContact: string
   // Step 2 - Experience
@@ -39,6 +40,7 @@ const initialFormData: FormData = {
   fullName: '',
   birthDate: '',
   profession: '',
+  email: '',
   discordId: '',
   otherContact: '',
   currentLimit: '',
@@ -167,6 +169,7 @@ export default function ApplicationModal() {
             { name: '👤 Nom', value: formData.fullName, inline: true },
             { name: '📅 Naissance', value: formData.birthDate, inline: true },
             { name: '💼 Profession', value: formData.profession || 'Non renseigné', inline: true },
+            { name: '📧 Email', value: formData.email || 'Non renseigné', inline: true },
             { name: '🎮 Discord', value: formData.discordId, inline: true },
             { name: '📱 Autre contact', value: formData.otherContact || 'Non renseigné', inline: true },
             { name: '\u200B', value: '**📊 Expérience Poker**', inline: false },
@@ -304,6 +307,15 @@ export default function ApplicationModal() {
                         value={formData.profession}
                         onChange={(e) => updateField('profession', e.target.value)}
                         placeholder="Développeur, Étudiant..."
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-gray-300">Email</label>
+                      <Input
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => updateField('email', e.target.value)}
+                        placeholder="exemple@email.com"
                       />
                     </div>
                     <div className="space-y-2">

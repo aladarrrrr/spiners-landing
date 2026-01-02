@@ -43,7 +43,6 @@ export default function FAQ() {
           badge="Questions fréquentes"
           title="Une"
           titleHighlight="question ?"
-          description="Retrouve les réponses aux questions les plus posées par notre communauté."
         />
 
         {/* FAQ Accordion */}

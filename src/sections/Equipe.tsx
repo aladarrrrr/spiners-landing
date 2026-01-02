@@ -5,14 +5,44 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import SectionHeader from '@/components/SectionHeader'
 import { fadeInUpWithDelay } from '@/lib/animations'
+import blagopsImage from '@/assets/blagops_profile.jpg'
+import aladinImage from '@/assets/aladin_profile.jpg'
 
 const team = [
+  {
+    name: 'Blagops',
+    role: 'Head Coach',
+    initial: 'B',
+    image: blagopsImage,
+    bio: `Blagops, coach emblématique Spin de PokerAcadémie et associé à Aladin chez Spiners.
+
+• Plus de 1,1M€ de gains en Spins, joués jusqu'aux plus hautes limites du .fr
+• Plus de 430 joueurs coachés, dont plus de 240 joueurs pros.
+
+Il a lui-même solutionné 95 % des situations sur PIO Solver avant même que GTO Wizard n'existe.
+Ultra précis sur ses déviations contre les récréatifs et le field, grâce à une connaissance pointue des datas, une prise de notes systématique et une analyse de patterns qu'il ajuste chaque jour pour maximiser l'EV.
+
+« Je considère chaque nouvel élève comme un challenge unique.
+Tous ont des objectifs qui leur sont propres, une personnalité à comprendre, des leaks bien ancrés, des compétences à révéler !
+
+Il m'est arrivé d'accompagner des joueurs ne connaissant pas les règles jusqu'aux plus hautes limites.
+J'ai réussi à faire passer pro des joueurs qu'aucun coach ou structure ne voulait.
+Je considère que presque tout le monde peut devenir pro en Spin, mais l'expérience m'a montré qu'une petite proportion parvient à le rester dans un format aussi marathonien…
+
+En revanche, il faut être prêt à :
+• apprendre les bases,
+• comprendre qu'on ne peut pas exploiter sans connaître la base GTO à partir de laquelle dévier,
+• avoir un seul objectif : maximiser le gain horaire tout en ayant une progression qui n'écoeure pas après quelques mois de grind.
+
+Tout est dans la qualité de jeu, l'EV et une redline qui monte en respectant les étapes ! »`,
+    highlights: ['1,1M€+ de gains en Spins', '430+ joueurs coachés', '240+ joueurs pros formés'],
+  },
   {
     name: 'Aladin',
     role: 'Team Manager',
     initial: 'A',
-    image: 'https://s.pnimg.net/4F3sg3G3eA67uwHwdLCm06fjxXnjZSRe_gK4kzLE2ao/pr:article-body/aHR0cHM6Ly9wbmlt/Zy5uZXQvdy9hcnRp/Y2xlcy1hdHRhY2ht/ZW50cy8wLzVjZS83/MmI4NDAzMDI4Lmpw/Zw.webp',
-    bio: `Aladin est une des figures respectées du poker francophone. Ancien Team Pro Winamax, il est également le seul double vainqueur de la Top Shark Academy, un exploit qui témoigne autant de son talent que de sa constance dans la performance.
+    image: aladinImage,
+    bio: `Aladin Reskallah est une des figures respectées du poker francophone. Ancien Team Pro Winamax, il est également le seul double vainqueur de la Top Shark Academy, un exploit qui témoigne autant de son talent que de sa constance dans la performance.
 
 Co-fondateur de la Team Cimitarra, Aladin s'est imposé au fil des années comme un joueur polyvalent, capable de grinder plusieurs formats :
 
@@ -24,20 +54,6 @@ Curieux, rigoureux et animé par la volonté permanente de progresser, Aladin a 
 
 Aujourd'hui, au sein du projet Spiners, il met à profit son expérience, sa vision long terme et son professionnalisme pour accompagner les élèves dans une progression structurée et durable.`,
     highlights: ['Double vainqueur Top Shark Academy', 'Ancien Team Pro Winamax', 'Co-fondateur Team Cimitarra'],
-  },
-  {
-    name: 'Blagops',
-    role: 'Head Coach',
-    initial: 'B',
-    image: 'https://s3-eu-west-1.amazonaws.com/medias.poker-academie.com/coachs/Blagops_460.png',
-    bio: `Blagops est l'un des spécialistes français les plus reconnus dans le format Spins / Expresso, où il a bâti sa réputation à la fois comme joueur high-stakes et comme coach exigeant et respecté. Actif depuis plus de dix ans sur le circuit online, il a atteint les plus hauts niveaux du format, jouant jusqu'aux Spins 400 € sur Betclic et 500 € sur Winamax, tout en affichant une maîtrise technique rare sur un format parmi les plus compétitifs du poker moderne.
-
-Coach depuis 2016, Blagops a accompagné des dizaines de joueurs, du micro à l'élite online. Sa pédagogie structurée, son sens de l'analyse et sa capacité à simplifier des concepts complexes en ont fait une référence pour ceux qui cherchent une progression sérieuse, durable et orientée performance.
-
-Joueur méthodique, adepte du travail théorique poussé et de l'adaptation en temps réel, Blagops s'est imposé parmi les meilleurs coachs français du format grâce à une approche à la fois rigoureuse, logique et profondément orientée vers la compréhension du jeu.
-
-Aujourd'hui, il apporte à Spiners son expertise unique des Spins high-stakes, sa vision stratégique et son expérience du coaching intensif, afin d'aider les élèves à structurer leur progression et à atteindre un niveau de compétence solide, quel que soit leur point de départ.`,
-    highlights: ['Spins 400€ Betclic / 500€ Winamax', 'Coach depuis 2016', 'Dizaines de joueurs accompagnés'],
   },
 ]
 

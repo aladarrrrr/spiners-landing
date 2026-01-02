@@ -1,15 +1,15 @@
 import { motion } from 'framer-motion'
-import { Clock, TrendingUp, Calendar, Briefcase, Users, Zap } from 'lucide-react'
+import { TrendingUp, Calendar, Zap, DollarSign } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import SectionHeader from '@/components/SectionHeader'
-import { staggerContainer, staggerItem } from '@/lib/animations'
+import { fadeInUpWithDelay } from '@/lib/animations'
 
 const features = [
   {
-    icon: Clock,
-    title: 'Sessions courtes',
+    icon: DollarSign,
+    title: 'Format le plus rentable',
     description:
-      'Parties de 3 à 7 minutes. Parfait pour jouer même avec un emploi du temps chargé.',
+      'Sûrement le format le plus facile et le plus rentable du poker en ligne. Découvrez pourquoi des milliers de joueurs l\'ont choisi.',
   },
   {
     icon: TrendingUp,
@@ -19,27 +19,15 @@ const features = [
   },
   {
     icon: Calendar,
-    title: 'Plus de flexibilité',
+    title: 'Flexibilité totale',
     description:
-      'Liberté totale sur les horaires. Jouez quand vous voulez, aussi longtemps que vous voulez.',
-  },
-  {
-    icon: Briefcase,
-    title: 'Compatible emploi du temps',
-    description:
-      'Possibilité de grind même avec un emploi du temps chargé. Idéal en complément d\'une activité.',
-  },
-  {
-    icon: Users,
-    title: 'Vie sociale préservée',
-    description:
-      'Plus facile pour la vie sociale et la vie de famille. Le poker s\'adapte à votre rythme.',
+      'Liberté totale sur les horaires, compatible avec un emploi du temps chargé. Le poker s\'adapte à votre rythme et préserve votre vie sociale et familiale.',
   },
   {
     icon: Zap,
     title: 'Progression rapide',
     description:
-      'Volume de mains élevé = apprentissage accéléré. Progressez plus vite que jamais.',
+      'Vous jouez plus de mains, vous progresserez donc plus rapidement. Atteignez vos objectifs de gains plus vite que jamais.',
   },
 ]
 
@@ -55,35 +43,33 @@ export default function PourquoiSpins() {
           badge="Le format roi"
           title="Pourquoi les"
           titleHighlight="Spins & Go ?"
-          description="Sûrement le format le plus facile et le plus rentable du poker en ligne. Découvrez pourquoi des milliers de joueurs ont fait le switch."
         />
 
         {/* Cards Grid */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
-            <motion.div key={index} variants={staggerItem}>
-              <Card className="h-full group hover:border-neon/30 hover:shadow-neon transition-all duration-300 bg-dark-100/80">
-                <CardContent className="p-6">
-                  <div className="w-14 h-14 rounded-xl bg-neon/10 border border-neon/30 flex items-center justify-center mb-5 group-hover:bg-neon/20 transition-colors">
-                    <feature.icon className="w-7 h-7 text-neon" />
+            <motion.div
+              key={index}
+              {...fadeInUpWithDelay(0.2 + index * 0.1)}
+            >
+              <Card className="h-full group hover:border-neon/30 hover:shadow-neon transition-all bg-dark-100/80">
+                <CardContent className="p-6 flex flex-col">
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-xl font-bold font-display group-hover:text-neon transition-colors flex-1 pr-4">
+                      {feature.title}
+                    </h3>
+                    <div className="w-14 h-14 rounded-xl bg-neon/10 border border-neon/30 flex items-center justify-center group-hover:bg-neon/20 transition-colors flex-shrink-0">
+                      <feature.icon className="w-7 h-7 text-neon" />
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold font-display mb-3 group-hover:text-neon transition-colors">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-400 leading-relaxed">
+                  <p className="text-gray-400 leading-relaxed text-balance">
                     {feature.description}
                   </p>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

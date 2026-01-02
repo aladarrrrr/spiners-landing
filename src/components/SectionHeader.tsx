@@ -5,7 +5,7 @@ interface SectionHeaderProps {
   badge: string
   title: string
   titleHighlight: string
-  description: string
+  description?: string
   className?: string
 }
 
@@ -27,9 +27,11 @@ export default function SectionHeader({
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-4">
         {title} <span className="text-gradient">{titleHighlight}</span>
       </h2>
-      <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-        {description}
-      </p>
+      {description && (
+        <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          {description}
+        </p>
+      )}
     </motion.div>
   )
 }

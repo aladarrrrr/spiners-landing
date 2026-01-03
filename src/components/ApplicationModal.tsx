@@ -113,11 +113,30 @@ export default function ApplicationModal() {
   const [formData, setFormData] = useState<FormData>(initialFormData)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [warnings, setWarnings] = useState({
+    email: false,
+    phone: false,
+  })
 
   const totalSteps = 3
 
   const updateField = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
+
+    // Validation pour le téléphone (immédiate)
+    if (field === 'otherContact') {
+      const hasLetters = /[a-zA-Z]/.test(value)
+      setWarnings((prev) => ({ ...prev, phone: hasLetters }))
+    }
+  }
+
+  const validateEmail = () => {
+    if (formData.email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      setWarnings((prev) => ({ ...prev, email: !emailRegex.test(formData.email) }))
+    } else {
+      setWarnings((prev) => ({ ...prev, email: false }))
+    }
   }
 
   const canProceed = () => {
@@ -158,66 +177,42 @@ export default function ApplicationModal() {
 
     setIsSubmitting(true)
 
-    // Format message for Discord
-    const discordMessage = {
-      content: null,
-      embeds: [
-        {
-          title: '🎰 Nouvelle candidature Spiners',
-          color: 1096009, // Emerald color
-          fields: [
-            { name: '👤 Nom', value: formData.fullName, inline: true },
-            { name: '📅 Naissance', value: formData.birthDate, inline: true },
-            { name: '💼 Profession', value: formData.profession || 'Non renseigné', inline: true },
-            { name: '📧 Email', value: formData.email || 'Non renseigné', inline: true },
-            { name: '🎮 Discord', value: formData.discordId, inline: true },
-            { name: '📱 Autre contact', value: formData.otherContact || 'Non renseigné', inline: true },
-            { name: '\u200B', value: '**📊 Expérience Poker**', inline: false },
-            { name: 'Limite', value: formData.currentLimit, inline: true },
-            { name: 'Volume/mois', value: formData.monthlyVolume, inline: true },
-            { name: 'Tables', value: formData.tableCount, inline: true },
-            { name: 'Heures/sem', value: formData.weeklyHours, inline: true },
-            { name: 'Bankroll', value: formData.bankroll, inline: true },
-            { name: 'Pool EV', value: formData.poolEV, inline: true },
-            {
-              name: 'Staké/coaché avant',
-              value: formData.previouslyStaked === 'oui'
-                ? `Oui - ${formData.stakedDetails || 'Pas de détails'}`
-                : 'Non',
-              inline: false,
-            },
-            { name: '🎯 Objectifs', value: formData.objectives, inline: false },
-            {
-              name: '💬 Infos supplémentaires',
-              value: formData.additionalInfo || 'Aucune',
-              inline: false,
-            },
-          ],
-          timestamp: new Date().toISOString(),
-        },
-      ],
-      thread_name: `Candidature - ${formData.fullName}`,
+    // Format data for Google Sheets
+    const sheetData = {
+      timestamp: new Date().toISOString(),
+      fullName: formData.fullName,
+      birthDate: formData.birthDate,
+      profession: formData.profession || 'Non renseigné',
+      email: formData.email || 'Non renseigné',
+      discordId: formData.discordId,
+      otherContact: formData.otherContact || 'Non renseigné',
+      currentLimit: formData.currentLimit,
+      monthlyVolume: formData.monthlyVolume,
+      tableCount: formData.tableCount,
+      weeklyHours: formData.weeklyHours,
+      bankroll: formData.bankroll,
+      poolEV: formData.poolEV,
+      previouslyStaked: formData.previouslyStaked,
+      stakedDetails: formData.stakedDetails || 'N/A',
+      objectives: formData.objectives,
+      additionalInfo: formData.additionalInfo || 'Aucune',
     }
 
     try {
-      // Replace with your Discord webhook URL
-      const webhookUrl = import.meta.env.VITE_DISCORD_WEBHOOK_URL
+      const appsScriptUrl = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL
 
-      if (webhookUrl) {
-        await fetch(webhookUrl, {
+      if (appsScriptUrl) {
+        await fetch(appsScriptUrl, {
           method: 'POST',
+          mode: 'no-cors',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(discordMessage),
+          body: JSON.stringify(sheetData),
         })
-      } else {
-        // Fallback: log to console if no webhook configured
-        console.log('Application submitted:', formData)
       }
 
       setIsSubmitted(true)
     } catch (error) {
       console.error('Error submitting application:', error)
-      // Still show success to user
       setIsSubmitted(true)
     } finally {
       setIsSubmitting(false)
@@ -231,6 +226,7 @@ export default function ApplicationModal() {
       setStep(0)
       setFormData(initialFormData)
       setIsSubmitted(false)
+      setWarnings({ email: false, phone: false })
     }, 300)
   }
 
@@ -293,12 +289,14 @@ export default function ApplicationModal() {
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-300">
-                        Date de naissance <span className="text-neon">*</span>
+                        Âge <span className="text-neon">*</span>
                       </label>
                       <Input
-                        type="date"
+                        type="text"
                         value={formData.birthDate}
                         onChange={(e) => updateField('birthDate', e.target.value)}
+                        placeholder="25"
+                        inputMode="numeric"
                       />
                     </div>
                     <div className="space-y-2">
@@ -315,8 +313,16 @@ export default function ApplicationModal() {
                         type="email"
                         value={formData.email}
                         onChange={(e) => updateField('email', e.target.value)}
+                        onBlur={validateEmail}
+                        onFocus={() => setWarnings((prev) => ({ ...prev, email: false }))}
                         placeholder="exemple@email.com"
+                        className={warnings.email ? 'border-yellow-500' : ''}
                       />
+                      {warnings.email && (
+                        <p className="text-xs text-yellow-500 flex items-center gap-1">
+                          ⚠️ Format d'email invalide
+                        </p>
+                      )}
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-300">
@@ -336,7 +342,13 @@ export default function ApplicationModal() {
                         value={formData.otherContact}
                         onChange={(e) => updateField('otherContact', e.target.value)}
                         placeholder="+33 6 12 34 56 78"
+                        className={warnings.phone ? 'border-yellow-500' : ''}
                       />
+                      {warnings.phone && (
+                        <p className="text-xs text-yellow-500 flex items-center gap-1">
+                          ⚠️ Le numéro de téléphone ne devrait pas contenir de lettres
+                        </p>
+                      )}
                     </div>
                   </>
                 )}

@@ -41,13 +41,13 @@ export default function Navbar() {
       }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20 relative">
+        <div className="flex items-center justify-between h-20 md:h-24 relative">
           {/* Logo */}
           <a href="#" className="flex items-center z-10">
             <img
               src={logoFull}
               alt="Spiners"
-              className="h-8 md:h-10 w-auto"
+              className="h-10 md:h-12 w-auto transition-all"
             />
           </a>
 
@@ -57,7 +57,7 @@ export default function Navbar() {
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className="text-gray-300 hover:text-neon transition-colors duration-200 text-sm font-medium"
+                className="text-gray-300 hover:text-neon transition-colors duration-200 text-base md:text-lg font-medium px-2"
               >
                 {link.label}
               </button>
@@ -71,10 +71,10 @@ export default function Navbar() {
           <div className="lg:hidden z-10">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
-                </Button>
-              </SheetTrigger>
+                  <Button variant="ghost" size="icon" className="p-2">
+                    <Menu className="h-6 w-6 md:h-7 md:w-7" />
+                  </Button>
+                </SheetTrigger>
               <SheetContent side="right" className="w-[300px] bg-dark-100">
                 <SheetTitle className="text-white">Menu</SheetTitle>
                 <div className="flex flex-col gap-6 mt-8">

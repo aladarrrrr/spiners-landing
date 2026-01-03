@@ -184,12 +184,32 @@ export default function Equipe() {
                       </div>
 
                       {/* Bio */}
-                      <div className="prose prose-invert prose-sm max-w-none">
-                        {member.bio.split('\n\n').map((paragraph, pIndex) => (
-                          <p key={pIndex} className="text-gray-300 leading-relaxed mb-4 last:mb-0">
-                            {paragraph}
-                          </p>
-                        ))}
+                      <div className="prose prose-invert prose-sm max-w-none coach-bio">
+                        {member.bio.split('\n\n').map((paragraph, pIndex) => {
+                          const lines = paragraph.split('\n').map(l => l.trim()).filter(Boolean)
+                          const isList = lines.every(l => l.startsWith('•') || l.startsWith('-') || l.startsWith('*'))
+
+                          if (isList) {
+                            return (
+                              <ul key={pIndex} className="professional-list">
+                                {lines.map((line, liIndex) => (
+                                  <li key={liIndex}>{line.replace(/^•\s?|-\s?|\*\s?/, '')}</li>
+                                ))}
+                              </ul>
+                            )
+                          }
+
+                          return (
+                            <p key={pIndex} className="text-gray-300 leading-relaxed mb-4 last:mb-0">
+                              {lines.map((line, i) => (
+                                <span key={i}>
+                                  {line}
+                                  {i < lines.length - 1 && <br />}
+                                </span>
+                              ))}
+                            </p>
+                          )
+                        })}
                       </div>
                     </CardContent>
                   </Card>

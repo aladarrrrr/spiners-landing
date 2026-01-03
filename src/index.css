@@ -97,4 +97,41 @@
       linear-gradient(90deg, rgb(var(--theme-color) / 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
   }
+
+  /* Coach bios: justified text and professional list styling */
+  .coach-bio p {
+    text-align: justify;
+    text-justify: inter-word;
+    /* Avoid breaking words in the middle */
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    word-break: normal;
+    overflow-wrap: normal;
+    margin-bottom: 0.875rem;
+  }
+
+  .professional-list {
+    margin: 0.5rem 0 1rem 1.5rem;
+    padding: 0;
+    list-style: disc;
+    list-style-position: outside;
+    color: #d1d5db; /* matches text-gray-300 */
+    line-height: 1.6;
+    /* Ensure clear indentation like a tab */
+    padding-left: 0.5rem;
+  }
+
+  .professional-list li {
+    margin-bottom: 0.35rem;
+    /* Prevent words being cut inside list items */
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+
+  .professional-list li::marker {
+    /* give a little space after the bullet to emulate a tab */
+    margin-right: 0.5rem;
+  }
 }

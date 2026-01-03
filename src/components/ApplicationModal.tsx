@@ -158,66 +158,44 @@ export default function ApplicationModal() {
 
     setIsSubmitting(true)
 
-    // Format message for Discord
-    const discordMessage = {
-      content: null,
-      embeds: [
-        {
-          title: '🎰 Nouvelle candidature Spiners',
-          color: 1096009, // Emerald color
-          fields: [
-            { name: '👤 Nom', value: formData.fullName, inline: true },
-            { name: '📅 Naissance', value: formData.birthDate, inline: true },
-            { name: '💼 Profession', value: formData.profession || 'Non renseigné', inline: true },
-            { name: '📧 Email', value: formData.email || 'Non renseigné', inline: true },
-            { name: '🎮 Discord', value: formData.discordId, inline: true },
-            { name: '📱 Autre contact', value: formData.otherContact || 'Non renseigné', inline: true },
-            { name: '\u200B', value: '**📊 Expérience Poker**', inline: false },
-            { name: 'Limite', value: formData.currentLimit, inline: true },
-            { name: 'Volume/mois', value: formData.monthlyVolume, inline: true },
-            { name: 'Tables', value: formData.tableCount, inline: true },
-            { name: 'Heures/sem', value: formData.weeklyHours, inline: true },
-            { name: 'Bankroll', value: formData.bankroll, inline: true },
-            { name: 'Pool EV', value: formData.poolEV, inline: true },
-            {
-              name: 'Staké/coaché avant',
-              value: formData.previouslyStaked === 'oui'
-                ? `Oui - ${formData.stakedDetails || 'Pas de détails'}`
-                : 'Non',
-              inline: false,
-            },
-            { name: '🎯 Objectifs', value: formData.objectives, inline: false },
-            {
-              name: '💬 Infos supplémentaires',
-              value: formData.additionalInfo || 'Aucune',
-              inline: false,
-            },
-          ],
-          timestamp: new Date().toISOString(),
-        },
-      ],
-      thread_name: `Candidature - ${formData.fullName}`,
+    // Format data for Google Sheets via Apps Script
+    const sheetData = {
+      timestamp: new Date().toISOString(),
+      fullName: formData.fullName,
+      birthDate: formData.birthDate,
+      profession: formData.profession || 'Non renseigné',
+      email: formData.email || 'Non renseigné',
+      discordId: formData.discordId,
+      otherContact: formData.otherContact || 'Non renseigné',
+      currentLimit: formData.currentLimit,
+      monthlyVolume: formData.monthlyVolume,
+      tableCount: formData.tableCount,
+      weeklyHours: formData.weeklyHours,
+      bankroll: formData.bankroll,
+      poolEV: formData.poolEV,
+      previouslyStaked: formData.previouslyStaked,
+      stakedDetails: formData.stakedDetails || 'N/A',
+      objectives: formData.objectives,
+      additionalInfo: formData.additionalInfo || 'Aucune',
     }
 
     try {
-      // Replace with your Discord webhook URL
-      const webhookUrl = import.meta.env.VITE_DISCORD_WEBHOOK_URL
+      const appsScriptUrl = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL
 
-      if (webhookUrl) {
-        await fetch(webhookUrl, {
+      if (appsScriptUrl) {
+        await fetch(appsScriptUrl, {
           method: 'POST',
+          mode: 'no-cors',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(discordMessage),
+          body: JSON.stringify(sheetData),
         })
       } else {
-        // Fallback: log to console if no webhook configured
-        console.log('Application submitted:', formData)
+        console.log('Application submitted (local):', sheetData)
       }
 
       setIsSubmitted(true)
     } catch (error) {
       console.error('Error submitting application:', error)
-      // Still show success to user
       setIsSubmitted(true)
     } finally {
       setIsSubmitting(false)

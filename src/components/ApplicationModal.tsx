@@ -177,7 +177,7 @@ export default function ApplicationModal() {
 
     setIsSubmitting(true)
 
-    // Format data for Google Sheets
+    // Format data for Google Sheets via Apps Script
     const sheetData = {
       timestamp: new Date().toISOString(),
       fullName: formData.fullName,
@@ -208,6 +208,8 @@ export default function ApplicationModal() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(sheetData),
         })
+      } else {
+        console.log('Application submitted (local):', sheetData)
       }
 
       setIsSubmitted(true)

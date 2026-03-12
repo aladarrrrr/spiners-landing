@@ -1,3 +1,4 @@
+import { useNavigate, Link } from "react-router-dom"
 import { motion } from 'framer-motion'
 import { Youtube, MessageCircle } from 'lucide-react'
 import logoFull from '@/assets/logo-full.png'
@@ -8,9 +9,10 @@ import { fadeInUpWithDelay } from '@/lib/animations'
 const iconMap = {
   youtube: Youtube,
   discord: MessageCircle,
-}
+} 
 
 export default function Footer() {
+const navigate = useNavigate()
   return (
     <footer className="bg-dark-100 border-t border-white/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -57,11 +59,17 @@ export default function Footer() {
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <button
-                      onClick={() => scrollToSection(link.href)}
-                      className="text-gray-400 hover:text-neon transition-colors text-sm"
-                    >
-                      {link.label}
-                    </button>
+  onClick={() => {
+    if (link.href.startsWith("/")) {
+      navigate(link.href)
+    } else {
+      scrollToSection(link.href)
+    }
+  }}
+  className="text-gray-400 hover:text-neon transition-colors text-sm"
+>
+  {link.label}
+</button>
                   </li>
                 ))}
               </ul>
@@ -77,8 +85,16 @@ export default function Footer() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-12 pt-8 border-t border-white/10"
         >
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
-            <p>© {new Date().getFullYear()} Spiners. Tous droits réservés.</p>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+            <div className="flex flex-col md:flex-row items-center gap-4">
+              <p>© {new Date().getFullYear()} Spiners. Tous droits réservés.</p>
+              <Link
+                to="/mentions-legales"
+                className="text-gray-400 hover:text-neon transition-colors underline"
+              >
+                Mentions légales
+              </Link> 
+            </div>
             <p className="text-center md:text-right max-w-xl">
               Le poker comporte des risques. Joue de manière responsable.
               18+ uniquement.
@@ -86,6 +102,8 @@ export default function Footer() {
           </div>
         </motion.div>
       </div>
+
+
     </footer>
   )
 }

@@ -34,7 +34,7 @@ export const footerSections: FooterSection[] = [
   {
     title: 'Légal',
     links: [
-      { label: 'Mentions légales', href: '#' },
+   { label: 'Mentions légales', href: '/mentions-legales' },
       { label: 'Politique de confidentialité', href: '#' },
     ],
   },

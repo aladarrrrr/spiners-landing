@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://spiners-landingg.vercel.app/sitemap.xml

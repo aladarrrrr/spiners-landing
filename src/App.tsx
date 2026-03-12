@@ -1,5 +1,6 @@
 
 import { Routes, Route } from "react-router-dom"
+import PrivacyPolicy from "./pages/privacypolicy"
 import LegalPage from "./pages/LegalPage"
 import {
   Navbar,
@@ -37,6 +38,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/mentions-legales" element={<LegalPage />} />
+      <Route path="/politique-de-confidentialite" element={<PrivacyPolicy />} />
     </Routes>
   )
 }

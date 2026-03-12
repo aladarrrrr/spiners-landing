@@ -13,22 +13,22 @@ const faqs = [
   {
     question: 'Quel niveau faut-il pour rejoindre Spiners ?',
     answer:
-      'Pour la Team Coaching For Profit, nous recherchons des grinders déjà gagnants en 10€+. Nous restons inclusifs : contenu gratuit sur YouTube et cours de rattrapage pour ceux qui veulent rejoindre la team dans le futur.',
+      'Pour la Team Coaching For Profit, nous recherchons des grinders déjà gagnants. Nous restons inclusifs : contenu gratuit sur YouTube et cours de rattrapage pour ceux qui veulent rejoindre la team dans le futur.',
   },
   {
     question: 'Comment se déroule le coaching ?',
     answer:
-      'Le coaching se fait via Discord : en individuel (travail personnalisé) ou en collectif (thématiques communes, analyses de mains). Matériel nécessaire : Discord, un ordinateur, un tracker obligatoire pour analyser les mains et mesurer la progression.',
+      'Le coaching se fait via Discord : nous privilégions le coaching individuel pour un travail de qualité et efficace. Matériel nécessaire : Discord, un ordinateur, un tracker obligatoire pour analyser les mains et mesurer la progression.',
   },
   {
     question: 'Y a-t-il un engagement de durée ?',
     answer:
-      'Nous pouvons être flexibles et voir au cas par cas, mais pour obtenir des résultats significatifs, il est préférable de travailler sur plusieurs mois.',
+      'Nous pouvons être flexibles et voir au cas par cas, mais pour obtenir des résultats significatifs, il est préférable de travailler sur 1 an minimum.',
   },
   {
     question: 'Que se passe-t-il après avoir postulé ?',
     answer:
-      'Nous analysons votre profil, votre niveau et vos objectifs. Si votre profil correspond, nous vous recontactons pour établir un plan d\'action personnalisé.',
+      'Nous analysons votre profil, votre niveau et vos objectifs. Nous vous répondons dans tous les cas, et si votre profil nous intéresse nous vous contacterons pour un entretien. ',
   },
 ]
 
